@@ -163,6 +163,7 @@ echo "Введите логин на GitHub"
 read login
 cd $d 
 touch README.md
+git init
 git add README.md
 git commit -m "first commit" 
 git remote add origin https://github.com/$login/$repo.git

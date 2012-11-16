@@ -1,0 +1,187 @@
+#!/bin/bash
+# Дорабатывается
+echo ""
+echo "Разработчик: Кустов Даниил"
+echo "Группа: K01-361"
+echo "Описание: Данная программа заливает файлы на гитхаб только в существующие репозитории"
+echo ""
+echo "Начать выполнение? (y/n): ";
+yn='y'
+while [ $yn = "y" -o $yn = "Y" ]; do                                             
+                                        read yn;              
+                                       if [ $yn = "y" -o $yn = "Y" ]; then
+echo "1) Добавление нового файла в репозиторий на GitHub"
+echo "2) Обновление всех файлов в репозитории GitHub"             
+echo "3) При создании нового репозитория (автодобавление Readme.md)"                         
+read case1
+case "$case1" in
+1 )
+echo "Введите директорию:"
+	read d
+	
+	while ! [ -d $d ]; do echo "Такой директории не существует. Повторить? (y/n)"
+		           read yn
+		           if [ $yn = "y" -o $yn = "Y" ]; then
+		                                                
+		                                                echo "Введите директорию:"
+		                                                read d
+		           elif [ $yn = "n" -o $yn = "N" ]; then
+		                                                    
+		                                                  echo "Программа завершена!"
+								  echo "Разработчик: Кустов Даниил"
+								  echo "Группа: K01-361"
+		                                                  exit 0
+		           else 
+		           while ! [ $yn = "n" -o $yn = "N" -o $yn = "y" -o $yn = "Y" ]
+		                            do
+		                            echo "Ошибка ввода! Введите y/n:"
+		                            read yn
+		                            if [ $yn = "y" -o $yn = "Y" ]; then
+					    
+		                            echo "Введите директорию:"
+		                            read d
+		                            elif [ $yn = "n" -o $yn = "N" ]; then 
+										   
+		                                                                   echo "Программа завершена!"
+									           echo "Разработчик: Кустов Даниил"
+									           echo "Группа: K01-361"
+		                                                                   exit 0
+		                                                                   
+		                            fi
+		          done
+		          fi
+	done
+	
+	
+echo "Введите имя файла:"
+	read f
+echo "Введите содержание коммита"
+read c
+echo "Введите имя репозитория"
+read repo
+echo "Введите логин на GitHub"
+read login
+cd $d 
+touch $f
+git add $f
+git commit -m "$c" 
+git remote add origin https://github.com/$login/$repo.git
+git push -u origin master
+;;
+
+
+2 )
+echo "Введите директорию:"
+	read d
+	
+	while ! [ -d $d ]; do echo "Такой директории не существует. Повторить? (y/n)"
+		           read yn
+		           if [ $yn = "y" -o $yn = "Y" ]; then
+		                                                
+		                                                echo "Введите директорию:"
+		                                                read d
+		           elif [ $yn = "n" -o $yn = "N" ]; then
+		                                                    
+		                                                  echo "Программа завершена!"
+								  echo "Разработчик: Кустов Даниил"
+								  echo "Группа: K01-361"
+		                                                  exit 0
+		           else 
+		           while ! [ $yn = "n" -o $yn = "N" -o $yn = "y" -o $yn = "Y" ]
+		                            do
+		                            echo "Ошибка ввода! Введите y/n:"
+		                            read yn
+		                            if [ $yn = "y" -o $yn = "Y" ]; then
+					    
+		                            echo "Введите директорию:"
+		                            read d
+		                            elif [ $yn = "n" -o $yn = "N" ]; then 
+										   
+		                                                                   echo "Программа завершена!"
+									           echo "Разработчик: Кустов Даниил"
+									           echo "Группа: K01-361"
+		                                                                   exit 0
+		                                                                   
+		                            fi
+		          done
+		          fi
+	done
+echo "Введите содержание коммита"
+read c
+echo "Введите имя репозитория"
+read repo
+echo "Введите логин на GitHub"
+read login
+cd $d 
+git add .
+git commit -m "$c"
+git remote add origin https://github.com/$login/$repo.git
+git push -u origin master
+;;
+
+3 )
+echo "Введите директорию:"
+	read d
+	
+	while ! [ -d $d ]; do echo "Такой директории не существует. Повторить? (y/n)"
+		           read yn
+		           if [ $yn = "y" -o $yn = "Y" ]; then
+		                                                
+		                                                echo "Введите директорию:"
+		                                                read d
+		           elif [ $yn = "n" -o $yn = "N" ]; then
+		                                                    
+		                                                  echo "Программа завершена!"
+								  echo "Разработчик: Кустов Даниил"
+								  echo "Группа: K01-361"
+		                                                  exit 0
+		           else 
+		           while ! [ $yn = "n" -o $yn = "N" -o $yn = "y" -o $yn = "Y" ]
+		                            do
+		                            echo "Ошибка ввода! Введите y/n:"
+		                            read yn
+		                            if [ $yn = "y" -o $yn = "Y" ]; then
+					    
+		                            echo "Введите директорию:"
+		                            read d
+		                            elif [ $yn = "n" -o $yn = "N" ]; then 
+										   
+		                                                                   echo "Программа завершена!"
+									           echo "Разработчик: Кустов Даниил"
+									           echo "Группа: K01-361"
+		                                                                   exit 0
+		                                                                   
+		                            fi
+		          done
+		          fi
+	done
+	
+	
+echo "Введите имя репозитория"
+read repo
+echo "Введите логин на GitHub"
+read login
+cd $d 
+touch README.md
+git init
+git add README.md
+git commit -m "first commit" 
+git remote add origin https://github.com/$login/$repo.git
+git push -u origin master
+;;
+esac
+echo "Повторить? (y/n): ";
+	yn=y
+				elif [ $yn = "n" -o $yn = "N" ]; then             
+						echo "Прекращено пользователем."
+						
+				else  echo "Ошибка ввода! Введите y/n:"
+				      yn=y
+				fi
+done
+
+echo "Программа завершена!"
+echo "Разработчик: Кустов Даниил"
+echo "Группа: K01-361"
+
+

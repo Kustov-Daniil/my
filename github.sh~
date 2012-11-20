@@ -114,7 +114,7 @@ echo "Введите имя репозитория"
 read repo
 echo "Введите логин на GitHub"
 read login
-cd $d
+cd $d 
 touch $f
 git rm -f $f
 git remote add origin https://github.com/$login/$repo.git
